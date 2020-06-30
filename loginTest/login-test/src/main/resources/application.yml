@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+#logging
+logging:
+  #swagger自身bug,调整日志的级别
+  level:
+    io.swagger.models.parameters.AbstractSerializableParameter: error
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db2020?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password:
+    maxActive: 200
+    minIdle: 20
+    initialSize: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    testOnBorrow: false
+    testWhileIdle: true
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    mapUnderscoreToCamelCase: true
+  redis:
+    database: 12
+    host: 192.168.2.35
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 5
+        min-idle: 0
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml

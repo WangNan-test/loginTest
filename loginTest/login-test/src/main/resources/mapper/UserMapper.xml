@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hdd.logintest.mapper.UserMapper">
+    <resultMap id="info" type="com.hdd.logintest.entity.User">
+        <id column="id" property="user_id"/>
+        <result column="user_name" property="userName"/>
+        <result column="password" property="password"/>
+    </resultMap>
+    <select id="login" parameterType="com.hdd.logintest.entity.User" resultMap="info">
+        SELECT `user_name`,`password`
+        FROM `user`
+        WHERE `user_name`=#{userName}
+    </select>
+
+    <insert id="registerUser" parameterType="com.hdd.logintest.entity.User" >
+        INSERT INTO `user` (`user_name`,`password`) VALUES(#{userName},#{password})
+    </insert>
+
+</mapper>
